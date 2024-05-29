@@ -1,0 +1,60 @@
+{% extends "template.html" %}
+
+{% block title %}Create New Assessment{% endblock %}
+
+{% block content %}
+<div class="create-assessment-form">
+    <h2>Create New Assessment</h2>
+    <form id="assessment-form" method="POST" action="/submit_assessment">
+        <div class="form-group">
+            <label for="assessment-name">Assessment Name:</label>
+            <textarea id="assessment-name" placeholder="Enter the assessment name" name="assessment_name" required></textarea>
+        </div>
+
+        <div class="form-group">
+            <label>Assessment Type: </label>
+            <input type="radio" id="formative" name="assessment_type" value="Formative">
+            <label for="formative">Formative</label>
+            <input type="radio" id="summative" name="assessment_type" value="Summative">
+            <label for="summative">Summative</label>
+        </div>
+
+        <div class="form-group">
+            <label for="difficulty">Assessment Difficulty: </label>
+            <select class="form-control" id="difficulty" name="difficulty">
+                <option value="Easy">Easy</option>
+                <option value="Medium">Medium</option>
+                <option value="Hard">Hard</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="module-cohort">Module Cohort:</label>
+            <textarea id="module-cohort" placeholder="Enter the module" name="module_cohort" required></textarea>
+        </div>
+        
+        <div class="form-group">
+            <label for="release-date">Release Date:</label>
+            <input type="datetime-local" id="release-date" name="release_date" required>
+        </div>
+
+        <div class="form-group">
+            <label for="due-date">Due Date:</label>
+            <input type="datetime-local" id="due-date" name="due_date" required>
+        </div>
+
+        <div id="questions-container">
+            <!-- Questions will be added here by JavaScript -->
+        </div>
+
+        <div id="form-controls" class="form-controls">
+            <button type="button" id="add-mc-question">Add New Multiple Choice Question</button>
+            <button type="button" id="add-text-question">Add New Text Question</button><br><br>
+            <input type="submit" value="Create Assessment" class="create-button">
+        </div>
+
+        <input type="hidden" id="deleted-questions" name="deleted_questions" value="">
+    </form>
+</div>
+<div id="create-assessment-page"></div>
+{% endblock %}

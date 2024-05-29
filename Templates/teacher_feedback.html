@@ -1,0 +1,59 @@
+{% extends "template.html" %}
+
+{% block title %}Review Student Feedback{% endblock %}
+
+{% block content %}
+
+<h1>Student Satisfaction Feedback</h1>
+<h2>Teacher1:</h2>
+
+<table>
+    <thead> 
+        <tr>
+            <th>Teaching Quality</th>
+            <th>Content Satisfaction</th>
+            <th>Interaction Engagement</th>
+            <th>Resource Availability</th>
+            <th>Preparation</th>
+            <th>Course Organization</th>
+            <th>Additional Comments</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for feedback in feedback_data %}
+        <tr>
+            <td>{{ feedback.teaching_quality }}</td>
+            <td>{{ feedback.content_satisfaction }}</td>
+            <td>{{ feedback.interaction_engagement }}</td>
+            <td>{{ feedback.resource_availability }}</td>
+            <td>{{ feedback.preparation }}</td>
+            <td>{{ feedback.course_organization }}</td>
+            <td>{{ feedback.additional_comments }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<h1>Assessment Feedback</h1>
+<table>
+    <thead>
+        <tr>
+            <th>Assessment Name</th>
+            <th>Student ID</th>
+            <th>Submitted At</th>
+            <th>Feedback</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for feedback in assessment_feedback_data %}
+        <tr>
+            <td>{{ feedback.assessment.name }}</td>
+            <td>{{ feedback.student_id }}</td>
+            <td>{{ feedback.submitted_at.strftime('%Y-%m-%d %H:%M') }}</td>
+            <td>{{ feedback.feedback }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

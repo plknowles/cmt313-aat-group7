@@ -1,0 +1,75 @@
+{% extends "template.html" %}
+
+{% block title %}Satisfaction Statistics{% endblock %}
+
+{% block content %}
+<h1>Teacher Evaluation Form</h1>
+
+<h2>teacher1</h2>
+
+<div class="recontainer">
+    <h1>Teacher Evaluation Form</h1>
+    <form id="feedbackForm" action="{{ url_for('submit_feedback') }}" method="post">
+
+        <fieldset>
+            <legend>Teaching Quality:</legend>
+            <label><input type="radio" name="teachingQuality" value="5" required> Highly Satisfied</label>
+            <label><input type="radio" name="teachingQuality" value="4"> Satisfied</label>
+            <label><input type="radio" name="teachingQuality" value="3"> Neutral</label>
+            <label><input type="radio" name="teachingQuality" value="2"> Dissatisfied</label>
+            <label><input type="radio" name="teachingQuality" value="1"> Highly Dissatisfied</label>
+        </fieldset>
+
+        <fieldset>
+            <legend>Content Satisfaction:</legend>
+            <label><input type="radio" name="contentSatisfaction" value="5" required> Highly Satisfied</label>
+            <label><input type="radio" name="contentSatisfaction" value="4"> Satisfied</label>
+            <label><input type="radio" name="contentSatisfaction" value="3"> Neutral</label>
+            <label><input type="radio" name="contentSatisfaction" value="2"> Dissatisfied</label>
+            <label><input type="radio" name="contentSatisfaction" value="1"> Highly Dissatisfied</label>
+        </fieldset>
+
+        <fieldset>
+            <legend>Interaction and Engagement:</legend>
+            <label><input type="radio" name="interactiveEngagement" value="5" required> Highly Satisfied</label>
+            <label><input type="radio" name="interactiveEngagement" value="4"> Satisfied</label>
+            <label><input type="radio" name="interactiveEngagement" value="3"> Neutral</label>
+            <label><input type="radio" name="interactiveEngagement" value="2"> Dissatisfied</label>
+            <label><input type="radio" name="interactiveEngagement" value="1"> Highly Dissatisfied</label>
+        </fieldset>
+
+        <fieldset>
+            <legend>Availability of Teaching Resources:</legend>
+            <label><input type="radio" name="resourceAvailability" value="5" required> Highly Satisfied</label>
+            <label><input type="radio" name="resourceAvailability" value="4"> Satisfied</label>
+            <label><input type="radio" name="resourceAvailability" value="3"> Neutral</label>
+            <label><input type="radio" name="resourceAvailability" value="2"> Dissatisfied</label>
+            <label><input type="radio" name="resourceAvailability" value="1"> Highly Dissatisfied</label>
+        </fieldset>
+
+        <fieldset>
+            <legend>Preparation before class:</legend>
+            <label><input type="radio" name="preparation" value="5" required> Highly Satisfied</label>
+            <label><input type="radio" name="preparation" value="4"> Satisfied</label>
+            <label><input type="radio" name="preparation" value="3"> Neutral</label>
+            <label><input type="radio" name="preparation" value="2"> Dissatisfied</label>
+            <label><input type="radio" name="preparation" value="1"> Highly Dissatisfied</label>
+        </fieldset>
+
+        <fieldset>
+            <legend>Course Organization:</legend>
+            <label><input type="radio" name="courseOrganization" value="5" required> Highly Satisfied</label>
+            <label><input type="radio" name="courseOrganization" value="4"> Satisfied</label>
+            <label><input type="radio" name="courseOrganization" value="3"> Neutral</label>
+            <label><input type="radio" name="courseOrganization" value="2"> Dissatisfied</label>
+            <label><input type="radio" name="courseOrganization" value="1"> Highly Dissatisfied</label>
+        </fieldset>
+
+        <label for="additionalComments">Additional Comments:</label>
+        <textarea id="additionalComments" name="additionalComments" rows="6" cols="50" style="width: 100%;"></textarea>
+
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "template.html" %}
+
+{% block title %}Send Satifsaction Feedback{% endblock %}
+
+{% block content %}
+<h1>Send Satifsaction Feedback</h1>
+
+<h2>Please Select a Teacher</h2>
+
+<div class="recontainer">
+    <form id="selectTeacherForm">
+        <select id="teacherSelect" required>
+            <option value="">Teacher's Name</option>
+            <option value="Teacher1">teacher1</option>
+        </select>
+        <button type="button" onclick="submitTeacher()">Continue</button>
+    </form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "template.html" %}
+
+{% block title %}Submit Feedback{% endblock %}
+
+{% block content %}
+<h1>Submit Feedback for {{ assessment.name }}</h1>
+
+<form action="{{ url_for('submit_assessment_feedback', id=assessment.id) }}" method="post">
+    <div class="form-group">
+        <label for="feedback">Your Feedback:</label>
+        <textarea class="form-control" id="feedback" name="feedback" rows="4" required></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit Feedback</button>
+</form>
+{% endblock %}

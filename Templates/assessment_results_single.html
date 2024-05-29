@@ -1,0 +1,32 @@
+{% extends "template.html" %}
+
+{% block title %}
+    Assessment Results - {{ assessment.name }}
+{% endblock %}
+
+{% block content %}
+    <h1>{{ assessment.name }} - Results</h1>
+    {% for attempt_result in attempt_results %}
+    <h2>Attempt {{ attempt_result.attempt_number }}</h2>
+        <ul class="answers-list">
+            {% for answer in attempt_result.answers %}
+            <li class="answer-item">
+                <div class="question"><strong>Question:</strong> {{ answer.question.question }}</div>
+                <div class="user-answer"><strong>Your Answer:</strong> {{ answer.answer }}</div>
+                <div class="correctness {{ 'correct' if answer.is_correct else 'incorrect' }}">
+                    <strong>Result:</strong> {{ "Correct" if answer.is_correct else "Incorrect" }}
+                </div>
+                <div class="explanation"><strong>Explanation:</strong> {{ answer.question.explanation }}</div>
+            </li>
+            {% endfor %}
+        </ul>
+        <div class="scores">
+            {% if attempt_result.total_marks_available is not none and attempt_result.total_marks_available != 0 %}
+                <p>Marks: {{ attempt_result.max_gross_marks }} / {{ attempt_result.total_marks_available }}</p>
+                <p>Score: {{ (attempt_result.max_gross_marks / attempt_result.total_marks_available * 100) | round(2) }}%</p>
+            {% else %}
+                <p>Score: Data not available</p>
+            {% endif %}
+        </div>
+    {% endfor %}
+{% endblock %}

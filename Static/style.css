@@ -1,0 +1,275 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Open Sans", sans-serif;
+}
+
+body {
+    background-color: #ffffff;
+    color: #333333;
+    font-size: 15px; 
+    line-height: 1.6;
+}
+
+main {
+    margin-left: 5rem;
+    margin-right: 5rem;
+}
+
+header.header {
+    background-color: #032E49;
+    padding: 10px 20px;
+    color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #ffffff;
+}
+
+header.header .logo img {
+    height: 50px;
+}
+
+header.header ul.nav-links {
+    list-style-type: none;
+}
+
+header.header ul.nav-links li {
+    display: inline;
+    margin-left: 20px;
+}
+
+header.header ul.nav-links li a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+h1 {
+    font-size: 40px; 
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+h2 {
+    font-size: 18px; 
+    margin-bottom: 10px;
+    font-weight: 500;
+    font-weight: bold;
+}
+
+button, input[type=submit] {
+    background-color: #032E49;
+    color: #ffffff;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 3px;
+    border: none;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+button:hover, input[type=submit]:hover {
+    background-color: #032E49;
+}
+
+textarea, input[type=datetime-local] {
+    width: 40%;
+    padding: 10px;
+    border: 1px solid #dddddd;
+    border-radius: 3px;
+    margin-top: 15px;
+    margin-left: 15px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #dddddd;
+}
+
+table th, table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #dddddd;
+}
+
+table th {
+    background-color: #032E49;
+    color: #ffffff;
+    font-weight: 500;
+}
+
+div.flash {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #dddddd;
+    border-radius: 3px;
+    font-weight: 500;
+}
+
+.form-group {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.questions-container {
+    margin-bottom: 10px;
+}
+
+a.edit-button {
+    display: inline-block;
+    background-color: #032E49;
+    color: #ffffff;
+    padding: 8px 16px;
+    border-radius: 3px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+a.edit-button:hover {
+    background-color: #003366;
+}
+
+.login-form {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    margin: auto;
+}
+
+.login-form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.login-form form {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-form input[type="text"],
+.login-form input[type="password"] {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+/* David's satisfaction job */
+.rebody {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.recontainer {
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    padding: 40px;
+    border-radius: 8px;
+}
+
+.reselect {
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+}
+
+.rebutton {
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.rebutton:hover {
+    background-color: #0056b3;
+}
+/* David's end */
+
+.answers-list {
+    list-style: none;
+    padding: 0;
+}
+
+.answer-item {
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #f8f9fa;
+    border: 1px solid #e0e0e0; 
+    border-radius: 5px;
+}
+
+.question, .user-answer, .correctness {
+    margin-bottom: 5px;
+}
+
+.question strong, .user-answer strong, .correctness strong {
+    color: #333;
+}
+
+.correctness {
+    font-weight: bold;
+    padding: 5px;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+.correct.correctness {
+    color: #155724;
+    background-color: #d4edda;
+}
+
+.incorrect.correctness {
+    color: #721c24;
+    background-color: #f8d7da;
+}
+
+.scores {
+    background-color: #f2f2f2;
+    border: 1px solid #ccc;    
+    border-radius: 8px;     
+    padding: 20px;      
+    margin-top: 20px;       
+    text-align: center;       
+    font-size: 18px;        
+    color: #333;                
+    font-weight: bold;
+}
+
+.answer-item {
+    margin-bottom: 10px;
+}
+
+a.attempt-button {
+    display: inline-block;
+    background-color: #032E49;
+    color: #ffffff;
+    padding: 8px 16px;
+    border-radius: 3px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+a.attempt-button:hover {
+    background-color: #003366;
+}
+
+table {
+    margin-bottom: 50px;
+}

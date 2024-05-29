@@ -1,0 +1,26 @@
+{% extends "template.html" %}
+
+{% block title %}Attempt Assessment{% endblock %}
+
+{% block content %}
+<h1>{{ assessment.name }}</h1>
+
+<form method="post" action="{{ url_for('submit_assessment_answers', assessment_id=assessment.id) }}">
+    {% for question in questions %}
+    <div class="question">
+        <h3>{{ loop.index }}. {{ question.question }}</h3>
+        {% if question.type == 'MCQ' %}
+        <div class="options">
+            {% for option in question.options %}
+            <input type="radio" id="option{{ loop.index }}_{{ question.id }}" name="answer_{{ question.id }}" value="{{ option }}">
+            <label for="option{{ loop.index }}_{{ question.id }}">{{ option }}</label><br>
+            {% endfor %}
+        </div>
+        {% else %}
+        <textarea name="answer_{{ question.id }}" placeholder="Enter your answer"></textarea>
+        {% endif %}
+    </div>
+    {% endfor %}
+    <button type="submit">Submit Answers</button>
+    </form>
+{% endblock %}

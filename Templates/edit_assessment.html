@@ -1,0 +1,85 @@
+{% extends "template.html" %}
+
+{% block title %}Edit Assessment{% endblock %}
+
+{% block content %}
+<div class="create-assessment-form">
+    <h2>Edit Assessment: {{ assessment.name }}</h2>
+    <form id="assessment-form" method="post" action="{{ url_for('update_assessment', id=assessment.id) }}">
+        <div class="form-group">
+            <label for="assessment-name">Assessment Name:</label>
+            <textarea id="assessment-name" placeholder="Enter the assessment name" name="assessment_name" required>{{ assessment.name }}</textarea>
+        </div>
+
+        <div class="form-group">
+            <label>Assessment Type: </label>
+            <input type="radio" id="formative" name="assessment_type" value="Formative" {% if assessment.type == 'Formative' %}checked{% endif %}>
+            <label for="formative">Formative</label>
+            <input type="radio" id="summative" name="assessment_type" value="Summative" {% if assessment.type == 'Summative' %}checked{% endif %}>
+            <label for="summative">Summative</label>
+        </div>
+
+        <div class="form-group">
+            <label for="difficulty">Assessment Difficulty: </label>
+            <select class="form-control" id="difficulty" name="difficulty">
+                <option value="Easy">Easy</option>
+                <option value="Medium">Medium</option>
+                <option value="Hard">Hard</option>
+            </select>
+        </div>        
+
+        <div class="form-group">
+            <label for="module-cohort">Module Cohort:</label>
+            <textarea id="module-cohort" placeholder="Enter the module" name="module_cohort" required>{{ assessment.module_cohort }}</textarea>
+        </div>        
+
+        <div class="form-group">
+            <label for="release-date">Release Date:</label>
+            <input type="datetime-local" id="release-date" name="release_date" value="{{ assessment.release_date.strftime('%Y-%m-%dT%H:%M') }}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="due-date">Due Date:</label>
+            <input type="datetime-local" id="due-date" name="due_date" value="{{ assessment.due_date.strftime('%Y-%m-%dT%H:%M') }}" required>
+        </div>
+
+        <div id="questions-container">
+            {% for question in questions %}
+            <div class="question-block">
+                <input type="hidden" name="question_id_{{ question.id }}" value="{{ question.id }}">
+                <label for="question_text_{{ question.id }}"><strong>Question {{ loop.index }}:</strong></label>
+                <textarea id="question_text_{{ question.id }}" placeholder="Enter the question" name="question_text_{{ question.id }}" required>{{ question.question }}</textarea><br>
+                {% if question.type == 'MCQ' %}
+                <label for="mcq_correct_answer_{{ question.id }}">Correct Answer:</label>
+                <textarea id="mcq_correct_answer_{{ question.id }}"  placeholder="Enter the correct answer" name="mcq_correct_answer_{{ question.id }}" required>{{ question.mcq_correct_answer }}</textarea><br>
+                <label for="mcq_incorrect_answer1_{{ question.id }}">Incorrect Answer 1:</label>
+                <textarea id="mcq_incorrect_answer1_{{ question.id }}" placeholder="Enter incorrect answer 1" name="mcq_incorrect_answer1_{{ question.id }}" required>{{ question.mcq_incorrect_answer1 }}</textarea><br>
+                <label for="mcq_incorrect_answer2_{{ question.id }}">Incorrect Answer 2:</label>
+                <textarea id="mcq_incorrect_answer2_{{ question.id }}" placeholder="Enter incorrect answer 2" name="mcq_incorrect_answer2_{{ question.id }}" required>{{ question.mcq_incorrect_answer2 }}</textarea><br>
+                <label for="mcq_incorrect_answer3_{{ question.id }}">Incorrect Answer 3:</label>
+                <textarea id="mcq_incorrect_answer3_{{ question.id }}" placeholder="Enter incorrect answer 3" name="mcq_incorrect_answer3_{{ question.id }}" required>{{ question.mcq_incorrect_answer3 }}</textarea><br>
+                <label for="explanation_{{ question.id }}">Explanation:</label>
+                <textarea id="explanation_{{ question.id }}" placeholder="Enter the explanation (optional)" name="explanation_{{ question.id }}">{{ question.explanation }}</textarea><br><br>
+                <button type="button" class="delete-question">Delete Question</button><br><br>
+                {% else %}
+                <label for="text_answer_{{ question.id }}">Text Answer:</label>
+                <textarea id="text_answer_{{ question.id }}" placeholder="Enter the answer" name="text_answer_{{ question.id }}">{{ question.text_answer }}</textarea><br>
+                <label for="explanation_{{ question.id }}">Explanation:</label>
+                <textarea id="explanation_{{ question.id }}" placeholder="Enter the explanation (optional)" name="explanation_{{ question.id }}">{{ question.explanation }}</textarea><br><br>
+                <button type="button" class="delete-question">Delete Question</button><br><br>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+
+        <div id="form-controls" class="form-controls">
+            <button type="button" id="add-mc-question">Add New Multiple Choice Question</button>
+            <button type="button" id="add-text-question">Add New Text Question</button><br><br>
+            <input type="submit" value="Update Assessment" class="update-button">
+        </div>
+
+        <input type="hidden" id="deleted-questions" name="deleted_questions" value="">
+    </form>
+</div>
+<div id="edit-assessment-page"></div>
+{% endblock %}

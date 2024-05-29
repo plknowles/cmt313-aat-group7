@@ -1,0 +1,29 @@
+{% extends "template.html" %}
+
+{% block title %}Teacher Statistics{% endblock %}
+
+{% block content %}
+<h1>Teacher Statistics</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>Assessment</th>
+            <th>Class Average</th>
+            <th>Max Score</th>
+            <th>Min Score</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for assessment_name, data in assessment_data.items() %}
+        <tr>
+            <td>{{ assessment_name }}</td>
+            <td>{{ data.class_average|round(2) }}</td>
+            <td>{{ data.max_score }}</td>
+            <td>{{ data.min_score }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
